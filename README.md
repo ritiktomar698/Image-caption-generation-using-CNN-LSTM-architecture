@@ -49,3 +49,72 @@ Network. The architecture of the image captioning model is
 shown in figure 1.<br>
 ![ima](https://user-images.githubusercontent.com/66600114/132738892-426bc3c8-0e84-49ac-96c5-6fa786c8dbf2.PNG)
 
+The model consists of 3 phases:<br>
+<h3>A. Image Feature Extraction</h3>
+The features of the images from the Flickr 8K dataset is
+extracted using the VGG 16 model due to the performance of
+the model in object identification. The VGG is a convolutional
+neural network which consists of consists of 16 layer which has
+a pattern of 2 convolution layers followed by 1 dropout layers
+until the fully connected layer at the end. The dropout layers
+are present to reduce overfitting the training dataset, as this
+model configuration learns very fast. These are processed by a
+Dense layer to produce a 4096 vector element representation of
+the photo and passed on to the LSTM layer.
+<h3>B. Sequence processor</h3>
+The function of a sequence processor is for handling the text
+input by acting as a word embedding layer. The embedded layer
+consists of rules to extract the required features of the text and
+consists of a mask to ignore padded values. The network is then
+connected to a LSTM for the final phase of the image
+captioning.
+<h3>C. Decoder</h3>
+The final phase of the model combines the input from the Image
+extractor phase and the sequence processor phase using an
+additional operation then fed to a 256 neuron layer and then to
+a final output Dense layer that produces a softmax prediction
+of the next word in the caption over the entire vocabulary which
+was formed from the text data that was processed in the
+sequence processor phase. The structure of the network to
+understand the flow of images and text is shown in the Figure
+2.
+<h2>TRAINING PHASE</h3>
+During training phase we provide pair of input image and its
+appropriate captions to the image captioning model. The VGG
+model is trained to identify all possible objects in an image.
+While LSTM part of model is trained to predict every word in
+the sentence after it has seen image as well as all previous
+words. For each caption we add two additional symbols to
+denote the starting and ending of the sequence. Whenever stop
+word is encountered it stops generating sentence and it marks
+end of string. Loss function for model is calculated as, where I
+represents input image and S represents the generated caption.
+N is length of generated sentence. pt and St represent
+probability and predicted word at the time t respectively.
+During the process of training we have tried to minimize this
+loss function.
+<br>
+<h2>RESULTS AND COMPARISION</h2>
+The image captioning model was implemented and we were
+able to generate moderately comparable captions with
+compared to human generated captions. The VGG net model
+first assigns probabilities to all the objects that are possibly
+present in the image, as shown in Figure 3. The model converts
+the image into word vector. This word vector is provided as
+input to LSTM cells which will then form sentence from this
+word vector. The generated sentences are shown in Fig 4.
+Generated sentence are black dog runs into the ocean next to a
+rock, while actual human generated sentences are black dog
+runs into the ocean next to a pile of seaweed., black dog runs
+into the ocean, a black dog runs into the ball, a black dog runs
+to a ball. This results in a BLEU score of 57 for this image. 
+<h2>CONCLUSION</h2>
+Implemented a deep learning
+approach for the captioning of images. The sequential API of
+Keras was used with Tensorflow as a backend to implement the
+deep learning architecture to achieve a effective BLEU score of 0.683 for our model.
+The Bilingual Evaluation Understudy
+Score, or BLEU for short, is a metric for evaluating a generated
+sentence to a reference sentence. A perfect match results in a
+score of 1.0, whereas a perfect mismatch results in a score of
+0.0. 
