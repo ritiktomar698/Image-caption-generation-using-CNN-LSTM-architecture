@@ -1,25 +1,29 @@
 # Image-caption-generation-using-CNN-LSTM-architecture
-Caption generation is an interesting artificial intelligence
+<h2>INTRODUCTION</h2>
+<ul>
+  <li>Caption generation is an interesting artificial intelligence
 problem where a descriptive sentence is generated for a given
-image. It involves the dual techniques from computer vision to
+    image.It involves the dual techniques from computer vision to
 understand the content of the image and a language model from
 the field of natural language processing to turn the
-understanding of the image into words in the right order. Image
+    understanding of the image into words in the right order.</li>
+  <li>Image
 captioning has various applications such as recommendations
 in editing applications, usage in virtual assistants, for image
 indexing, for visually impaired persons, for social media, and
-several other natural language processing applications.
-Recently, deep learning methods have achieved state-ofthe-art
+    several other natural language processing applications.</li>
+<li>Recently, deep learning methods have achieved state-ofthe-art
 results on examples of this problem. It has been demonstrated
 that deep learning models are able to achieve optimum results
 in the field of caption generation problems. Instead of requiring
 complex data preparation or a pipeline of specifically designed
 models, a single end-to-end model can be defined to predict a
-caption, given a photo. In order to evaluate our model, we
+  caption, given a photo. </li>
+  <li>In order to evaluate our model, we
 measure its performance on the Flickr8K dataset using the
 BLEU standard metric. These results show that our proposed
 model performs better than standard models regarding image
-captioning in performance evaluation. 
+    captioning in performance evaluation.</li> 
 <h2>DATASET AND EVALUATION METRICS</h2>
 For task of image captioning there are several annotated images
 dataset are available. Most common of them are Pascal VOC
